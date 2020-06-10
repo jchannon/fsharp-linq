@@ -1,5 +1,4 @@
-﻿
-[<EntryPoint>]
+﻿[<EntryPoint>]
 let main argv =
     printfn "Linq examples!"
     linq1 ()
@@ -15,4 +14,6 @@ let main argv =
     linq11 ()
     linq12 ()
     linq13 ()
+    linq14 ()
+    linq19 ()
     0 // return an integer exit code

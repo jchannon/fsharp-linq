@@ -51,17 +51,52 @@ let linq11 () =
     printfn "Product Info:"
     productInfos |> List.iter (fun x -> printfn "%s is in the category %s and costs %f per unit." x.ProductName x.Category x.Price)
 
-let linq12() =
+let linq12 () =
     let numbers = [| 5; 4; 1; 3; 9; 8; 6; 7; 2; 0 |]
-    let numsInPlace = numbers |> Array.mapi (fun index x -> {|Num = x; InPlace = x = index|})
+    let numsInPlace =
+        numbers |> Array.mapi (fun index x ->
+                       {| Num = x
+                          InPlace = x = index |})
     printfn ""
     printfn "Number: In-place?"
-    numsInPlace |> Array.iter (fun x-> printfn "%i : %b" x.Num x.InPlace)
+    numsInPlace |> Array.iter (fun x -> printfn "%i : %b" x.Num x.InPlace)
 
-let linq13() =
+let linq13 () =
     let numbers = [| 5; 4; 1; 3; 9; 8; 6; 7; 2; 0 |]
     let strings = [| "zero"; "one"; "two"; "three"; "four"; "five"; "six"; "seven"; "eight"; "nine" |]
-    let textNums = numbers |> Array.choose (fun x -> if x < 5 then Some strings.[x] else None)
+
+    let textNums =
+        numbers
+        |> Array.choose (fun x ->
+            if x < 5 then Some strings.[x] else None)
     printfn ""
     printfn "Numbers < 5"
-    textNums |> Array.iter (fun x-> printfn "%s" x)
+    textNums |> Array.iter (fun x -> printfn "%s" x)
+
+let linq14 () =
+    let numbersA = [| 0; 2; 4; 5; 6; 8; 9 |]
+    let numbersB = [| 1; 3; 5; 7; 8 |]
+
+    let pairs =
+        numbersA
+        |> Array.collect (fun i1 ->
+            numbersB
+            |> Array.choose (fun i2 ->
+                if i1 < i2 then Some(i1, i2) else None))
+    printfn ""
+    printfn "Pairs where a < b:"
+    pairs |> Array.iter (fun x -> printfn "%i is less than %i" (fst x) (snd x))
+    
+//skipped 15-18 :)
+
+let linq19 () =
+    let customers = getCustomerList ()
+
+    let customerOrders =
+        customers
+        |> List.mapi (fun index x -> index, x)
+        |> List.collect (fun (index, x) ->
+            if isNull x.Orders
+            then []
+            else List.ofSeq x.Orders |> List.map (fun f2 -> sprintf "Customer #%i has an order with OrderId %i" (index + 1) f2.OrderId))
+    customerOrders |> List.iter (fun x -> printfn "%s" x)

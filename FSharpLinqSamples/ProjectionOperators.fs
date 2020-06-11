@@ -86,7 +86,7 @@ let linq14 () =
     printfn ""
     printfn "Pairs where a < b:"
     pairs |> Array.iter (fun x -> printfn "%i is less than %i" (fst x) (snd x))
-    
+
 //skipped 15-18 :)
 
 let linq19 () =
@@ -99,4 +99,4 @@ let linq19 () =
             if isNull x.Orders
             then []
             else List.ofSeq x.Orders |> List.map (fun f2 -> sprintf "Customer #%i has an order with OrderId %i" (index + 1) f2.OrderId))
-    customerOrders |> List.iter (fun x -> printfn "%s" x)
+    customerOrders |> List.iter (printfn "%s")

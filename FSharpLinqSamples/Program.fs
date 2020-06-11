@@ -16,4 +16,5 @@ let main argv =
     linq13 ()
     linq14 ()
     linq19 ()
+    linq20 ()
     0 // return an integer exit code

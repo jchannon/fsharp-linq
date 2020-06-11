@@ -10,6 +10,7 @@
         <Compile Include="DataStore.fs" />
         <Compile Include="RestrictionOperators.fs" />
         <Compile Include="ProjectionOperators.fs" />
+        <Content Include="PartitioningOperators.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 </Project>

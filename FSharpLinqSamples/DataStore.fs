@@ -49,5 +49,5 @@ let getProductList () =
       { ProductId = "8"
         ProductName = "Pork Chops"
         Category = "Meat/Poultry"
-        UnitPrice = 36.00
+        UnitPrice = 37.00
         UnitsInStock = 0 } ]

@@ -2,6 +2,7 @@
 module OrderingOperators
 
 open System
+open System.Linq
 
 let linq28 () =
     let words = [| "cherry"; "apple"; "blueberry" |]
@@ -60,12 +61,11 @@ let linq37 () =
                 select p
         }
 
-    let fpp =
-        products
-        |> List.map (fun x -> (x.Category, x.UnitPrice))
-        |> List.sortByDescending (fun (cat, price) -> (price, cat))
+    let foo = products.OrderBy(fun x -> x.Category).ThenByDescending(fun x -> x.UnitPrice)
+
+
 
     printfn ""
     printfn "The sorted list of products:"
     sortedProducts |> Seq.iter (printfn "%A")
-    fpp |> Seq.iter (printfn "%A")
+    foo |> Seq.iter (printfn "%A")

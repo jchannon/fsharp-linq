@@ -63,9 +63,17 @@ let linq37 () =
 
     let foo = products.OrderBy(fun x -> x.Category).ThenByDescending(fun x -> x.UnitPrice)
 
-
+    //No elegant way to do it in F# types imo
 
     printfn ""
     printfn "The sorted list of products:"
     sortedProducts |> Seq.iter (printfn "%A")
     foo |> Seq.iter (printfn "%A")
+
+let linq39()=
+    let digits = [| "zero"; "one"; "two"; "three"; "four"; "five"; "six"; "seven"; "eight"; "nine" |]
+    let filtered = digits |> Array.filter(fun x -> x.[1] = 'i') |> Array.rev
+    printfn ""
+    printfn "A backwards list of the digits with a second character of 'i':"
+    filtered |> Array.iter (printfn "%s")
+

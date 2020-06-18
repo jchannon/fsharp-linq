@@ -27,6 +27,9 @@ let main argv =
     linq30 ()
     linq31 ()
     linq32 ()
-    linq36()
-    linq37()
+    linq36 ()
+    linq37 ()
+    linq39 ()
+    linq40 ()
+    linq41 ()
     0 // return an integer exit code

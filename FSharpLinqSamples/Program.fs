@@ -32,4 +32,8 @@ let main argv =
     linq39 ()
     linq40 ()
     linq41 ()
+    linq42 ()
+    linq43 ()
+    linq46 ()
+    extensiontest ()
     0 // return an integer exit code

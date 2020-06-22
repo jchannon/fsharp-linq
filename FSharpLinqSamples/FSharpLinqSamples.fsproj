@@ -5,12 +5,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="customers.json" CopyToOutputDirectory="Always" />
+    <Compile Include="Extensions.fs" />
     <Compile Include="DataStore.fs" />
     <Compile Include="RestrictionOperators.fs" />
     <Compile Include="ProjectionOperators.fs" />
     <Compile Include="PartitioningOperators.fs" />
     <Compile Include="OrderingOperators.fs" />
     <Compile Include="GroupingOperator.fs" />
+    <Compile Include="SetOperators.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 </Project>

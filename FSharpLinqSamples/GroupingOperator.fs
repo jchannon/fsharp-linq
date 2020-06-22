@@ -17,3 +17,27 @@ let linq41 () =
     |> Array.iter (fun (x, y) ->
         printfn "Words that start with the letter %s:" x
         (y) |> Array.iter (printfn "%s"))
+
+
+let linq42 () =
+    let products = getProductList ()
+    let orderGroups = products |> List.groupBy (fun x -> x.Category)
+    printfn ""
+    orderGroups
+    |> List.iter (fun (category, products) ->
+        printfn "%s:" category
+        products |> List.iter (printfn "%A"))
+
+let linq43 () =
+    let customers = getCustomerList ()
+    let customerOrderGroups =
+        customers |> List.map (fun x ->
+                         {| CompanyName = x.CompanyName
+                            YearGroups =
+                                (if isNull x.Orders then List.empty<Order> else List.ofSeq x.Orders
+                                 |> List.groupBy (fun x -> x.OrderDate.Year))
+                                |> List.map (fun (year, orders) ->
+                                    {| Year = year
+                                       MonthGroups = orders |> List.groupBy (fun x -> x.OrderDate.Month) |}) |})
+    printfn ""
+    printfn "%A" customerOrderGroups
